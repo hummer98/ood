@@ -1,5 +1,7 @@
 # Orchestration-Oriented Development (OOD)
 
+*English | [日本語](README.ja.md)*
+
 **A document-driven orchestration plugin for Claude Code.** Author the plan in
 `docs/`, run it with Agent Teams, gate completion on inspection. Flat two-tier
 (lead + role teammates), no JSON state machine — *the documents are the state*.
