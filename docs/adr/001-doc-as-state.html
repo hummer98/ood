@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ADR 001 — Documents are the state (no JSON state machine)</title>
+<style>
+  body{font:15px/1.75 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;max-width:840px;margin:32px auto;padding:0 20px;color:#1a1a1a}
+  h1{font-size:23px;border-bottom:2px solid #ddd;padding-bottom:8px}
+  h2{font-size:18px;margin-top:28px}
+  code{background:#f3f4f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+  .meta{color:#666;font-size:13px}
+  table{border-collapse:collapse;width:100%;margin:10px 0}
+  th,td{border:1px solid #ddd;padding:6px 10px;text-align:left;vertical-align:top}
+  th{background:#f7f8fa}
+  .mermaid{display:flex;justify-content:center;margin:16px 0;padding:14px;background:#fafbfc;border:1px solid #eee;border-radius:10px}
+  .nav{font-size:12.5px;color:#888;margin-bottom:6px}
+  .nav a{color:#2563eb;text-decoration:none}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</head>
+<body>
+<div class="nav"><a href="../../README.md">OOD</a> · docs/adr · foundational</div>
+<h1>ADR 001 — Documents are the state</h1>
+<p class="meta"><strong>Status</strong>: accepted · foundational</p>
+
+<h2>Context</h2>
+<p>An orchestrator needs durable state: what's the plan, what's done, what's left,
+how to resume after an interruption. The classic answer is an explicit
+<strong>state machine</strong> — a <code>task-state.json</code> with an FSM, often
+driven by a background daemon. That machinery exists to compensate for an earlier
+era: small context windows (state had to be externalized) and weak agency (a
+process had to be told, step by step, what to do next).</p>
+
+<h2>Decision</h2>
+<p>OOD keeps <strong>no self-maintained JSON state machine</strong>. The durable
+state <em>is the documents</em> under <code>docs/</code>. Ephemeral coordination
+state (Agent Teams' task list) is owned by the harness and never hand-edited.</p>
+<pre class="mermaid">
+flowchart LR
+  subgraph Durable["docs/ = durable state (authored)"]
+    P["docs/plans/*.html<br/>program counter"]
+    R["docs/reports/*.html<br/>completion markers"]
+  end
+  subgraph Ephemeral["harness-owned (untouched)"]
+    T["Agent Teams<br/>task list JSON"]
+  end
+  P --> Run([orchestration])
+  Run --> R
+  T -. disposable .-> Run
+</pre>
+<ul>
+  <li><code>docs/plans</code> is the program counter; <code>docs/reports</code> are
+      the completion markers. Progress is readable as files.</li>
+  <li>The Agent Teams JSON is treated as disposable — the truth is the plan.</li>
+</ul>
+
+<h2>Consequences</h2>
+<table>
+  <tr><th>easier</th><th>harder / accepted</th></tr>
+  <tr>
+    <td>Human <em>and</em> AI can read state. Resume by re-reading docs. No FSM to
+        build or keep consistent.</td>
+    <td>Docs must be kept honest (the doc-sync skill). Gates rely on file/heading
+        conventions rather than typed state.</td>
+  </tr>
+</table>
+
+<h2>Alternatives considered</h2>
+<ul>
+  <li><strong>task-state.json + FSM</strong> — rejected: ceremony that drifts from
+      reality; redundant when 1M context + agency hold the work.</li>
+  <li><strong>Background daemon</strong> — rejected: heavy; only pays off at breadth
+      (many concurrent epics), which OOD does not target (see ADR 002).</li>
+</ul>
+</body>
+</html>

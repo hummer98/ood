@@ -39,6 +39,24 @@ lead (you)  ── author plan → spawn teammates → monitor → gate → sync
   `docs/reports/` to see what's done and re-spawns the rest. (Agent Teams doesn't
   restore teammates on `/resume`; with doc-as-state that doesn't matter.)
 
+## Design philosophy
+
+OOD is a *style*, not just a tool — and its choices are recorded as ADRs that are
+themselves worked examples of OOD docs (HTML, diagram-first). They render in a
+browser / c11 surface or via `raw.githack.com`; on GitHub the `.html` opens as
+source.
+
+- [ADR 001 — Documents are the state](docs/adr/001-doc-as-state.html) — why there's no JSON state machine
+- [ADR 002 — Flat two-tier](docs/adr/002-flat-two-tier.html) — why no Manager/Conductor tier
+- [ADR 003 — Hooks are the only determinism layer](docs/adr/003-hook-as-the-only-determinism.html) — soft prompts vs. hard gates
+- [ADR 004 — HTML, diagram-first documents](docs/adr/004-html-diagram-first-docs.html) — the two-audience doctrine
+- [ADR 005 — Inspection is an independent, enforced gate](docs/adr/005-inspection-as-adversarial-gate.html) — verifying against generation bias
+
+The throughline: as agents get more capable, the bottleneck shifts from *writing
+code* to *deciding intent and verifying it*. OOD invests there — a clear plan,
+independent verification, honest docs — and drops the coordination ceremony (state
+machines, daemons, tiers) that capable models + Agent Teams make redundant.
+
 ## Requirements
 
 - Claude Code with **Agent Teams** enabled:

@@ -36,6 +36,22 @@ lead (あなた)  ── 計画著述 → teammate spawn → 監視 → ゲー�
   済み/未済を判定し未済だけ再 spawn する。（Agent Teams は `/resume` で teammate を復元
   しないが、doc-as-state なら無関係。）
 
+## 設計思想
+
+OOD は単なるツールでなく*開発スタイル*であり、その判断は ADR として記録している。ADR
+自体が OOD ドキュメントの実例（HTML・図主体）になっている。ブラウザ / c11 surface か
+`raw.githack.com` でレンダリングされる（GitHub 上では `.html` はソース表示）。
+
+- [ADR 001 — ドキュメントが状態](docs/adr/001-doc-as-state.html) — JSON ステートマシンを持たない理由
+- [ADR 002 — フラット2層](docs/adr/002-flat-two-tier.html) — Manager/Conductor 層を置かない理由
+- [ADR 003 — hook だけが決定論レイヤー](docs/adr/003-hook-as-the-only-determinism.html) — ソフトなプロンプト vs ハードなゲート
+- [ADR 004 — HTML・図主体のドキュメント](docs/adr/004-html-diagram-first-docs.html) — 二観客ドクトリン
+- [ADR 005 — 検査は独立・強制されたゲート](docs/adr/005-inspection-as-adversarial-gate.html) — 生成バイアスへの検証
+
+通底するのは：エージェントが強くなるほど、ボトルネックは*コードを書くこと*から*意図を
+決め検証すること*へ移る。OOD はそこに投資し（明確な計画・独立した検証・正直なドキュメント）、
+能力あるモデル＋Agent Teams が冗長にした調整の儀式（ステートマシン・daemon・階層）を捨てる。
+
 ## 要件
 
 - **Agent Teams** を有効化した Claude Code：

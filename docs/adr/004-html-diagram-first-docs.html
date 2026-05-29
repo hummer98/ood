@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ADR 004 — HTML, diagram-first documents</title>
+<style>
+  body{font:15px/1.75 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;max-width:840px;margin:32px auto;padding:0 20px;color:#1a1a1a}
+  h1{font-size:23px;border-bottom:2px solid #ddd;padding-bottom:8px}
+  h2{font-size:18px;margin-top:28px}
+  code{background:#f3f4f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+  .meta{color:#666;font-size:13px}
+  .mermaid{display:flex;justify-content:center;margin:16px 0;padding:14px;background:#fafbfc;border:1px solid #eee;border-radius:10px}
+  .nav{font-size:12.5px;color:#888;margin-bottom:6px}
+  .nav a{color:#2563eb;text-decoration:none}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</head>
+<body>
+<div class="nav"><a href="../../README.md">OOD</a> · docs/adr · foundational</div>
+<h1>ADR 004 — HTML, diagram-first documents</h1>
+<p class="meta"><strong>Status</strong>: accepted · foundational</p>
+
+<h2>Context</h2>
+<p>OOD documents serve <strong>two audiences at once</strong>: humans who decide and
+approve, and AI teammates who load them into context. Their optima differ — humans
+parse pictures fast; agents parse structure. We also want a <em>single source</em>
+per document, to avoid the Markdown↔HTML drift OOD exists to escape.</p>
+
+<h2>Decision</h2>
+<p><strong>HTML is the standard format</strong>, one file per document (no Markdown
+source), and documents are <strong>diagram-first</strong> (Mermaid / inline SVG) —
+sequence, flow, architecture, state — with prose in support, not the reverse.</p>
+<pre class="mermaid">
+flowchart LR
+  Doc["one HTML doc<br/>(single source)"]
+  Doc --> Human["human → renders in c11<br/>browser/markdown surface;<br/>diagrams aid the decision"]
+  Doc --> AI["AI teammate → reads semantic<br/>HTML into context;<br/>keep adr/specs lean"]
+</pre>
+
+<h2>Consequences</h2>
+<ul>
+  <li>Renders directly in a c11 browser/markdown surface; diagrams carry structure
+      that walls of text bury. One source, no view to keep in sync.</li>
+  <li>HTML is heavier for AI context than terse Markdown → mitigate by keeping
+      AI-read docs (<code>adr</code>, <code>specs</code>) semantic with minimal
+      styling.</li>
+  <li>Mermaid loads from a CDN → for fully offline/static figures, use inline SVG.</li>
+</ul>
+
+<h2>Alternatives considered</h2>
+<ul>
+  <li><strong>Markdown source + generated HTML view</strong> — rejected: two artifacts
+      that drift; reintroduces the sync problem.</li>
+  <li><strong>Markdown only</strong> — rejected: weaker for human visualization and
+      for embedding rich diagrams as the primary content.</li>
+</ul>
+</body>
+</html>
