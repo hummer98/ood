@@ -1,5 +1,6 @@
 {
   "name": "ood",
+  "description": "Orchestration-Oriented Development — a document-driven, Agent-Teams orchestration plugin for Claude Code.",
   "owner": {
     "name": "hummer98",
     "url": "https://github.com/hummer98"
