@@ -108,11 +108,10 @@ The lead interviews you into testable acceptance criteria, writes a plan to
 
 | path | what |
 |---|---|
-| `skills/master-orchestrator/` | the lead playbook |
+| `skills/ood/` | the lead playbook — invoke with `/ood <goal>` |
 | `skills/doc-sync/` | sync `docs/specs/` from git history (after GO) |
 | `agents/` | role teammates: architect, design-reviewer, implementer, inspector |
 | `hooks/gate-task-completed.py` | the inspection gate |
-| `commands/ood.md` | `/ood <goal>` entry point |
 | `templates/` | plan / adr / inspection-report shapes |
 | `CLAUDE.md.fragment` | doc-map to merge into your project |
 

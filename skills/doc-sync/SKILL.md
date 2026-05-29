@@ -3,7 +3,7 @@ name: doc-sync
 description: >
   Use after work lands (after an inspection GO) to sync docs/specs with the
   implementation. Triggers: "docs を同期", "仕様書更新", "sync docs", "update specs",
-  or invoked by master-orchestrator at close. Input is git history + docs/plans
+  or invoked by the ood lead at close. Input is git history + docs/plans
   only — no external state files.
 ---
 

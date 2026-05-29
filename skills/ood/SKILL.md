@@ -1,14 +1,15 @@
 ---
-name: master-orchestrator
+name: ood
 description: >
-  Use to run a feature/epic end-to-end as the team lead: dialogue the spec into a
-  plan, run design -> review -> implement -> inspect with an Agent Team, and gate
-  completion on inspection. Triggers: "/ood", "オーケストレーション", "計画して実装",
-  "plan and build this", "run this as a team", "spec to implementation".
+  Orchestration-Oriented Development lead. Run a feature/epic end-to-end as the
+  team lead: dialogue the spec into a plan, run design -> review -> implement ->
+  inspect with an Agent Team, and gate completion on inspection. Triggers: "/ood",
+  "オーケストレーション", "計画して実装", "plan and build this", "run this as a team",
+  "spec to implementation".
   The plan and reports under docs/ are the state; do not build a JSON state machine.
 ---
 
-# master-orchestrator — the lead playbook
+# ood — the OOD lead playbook
 
 You are the **lead** of a flat, two-tier team:
 

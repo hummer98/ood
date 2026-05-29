@@ -101,11 +101,10 @@ GO までチームを回す。
 
 | パス | 役割 |
 |---|---|
-| `skills/master-orchestrator/` | lead プレイブック |
+| `skills/ood/` | lead プレイブック — `/ood <goal>` で起動 |
 | `skills/doc-sync/` | GO 後に git 履歴から `docs/specs/` を同期 |
 | `agents/` | 役割 teammate：architect, design-reviewer, implementer, inspector |
 | `hooks/gate-task-completed.py` | 検査ゲート |
-| `commands/ood.md` | `/ood <goal>` 入口 |
 | `templates/` | plan / adr / inspection-report の雛形 |
 | `CLAUDE.md.fragment` | 対象プロジェクトにマージする doc-map |
 

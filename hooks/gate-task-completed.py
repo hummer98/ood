@@ -9,7 +9,7 @@ This is the determinism backbone of OOD: the "don't finish without
 inspection" rule is enforced by file existence, not by prompt suggestion.
 No JSON state machine — the report file *is* the gate.
 
-Convention (set by the master-orchestrator skill when it creates tasks):
+Convention (set by the ood lead skill when it creates tasks):
   - A task that must pass inspection carries the token  [gate:inspect]
     in its name or description.
   - The plan it belongs to is referenced as  plan:NNN  (e.g. plan:001).
