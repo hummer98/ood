@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ADR NNN — &lt;decision title&gt;</title>
+<style>
+  body{font:15px/1.7 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;max-width:840px;margin:32px auto;padding:0 20px;color:#1a1a1a}
+  h1{font-size:24px;border-bottom:2px solid #ddd;padding-bottom:8px}
+  h2{font-size:18px;margin-top:26px}
+  code{background:#f3f4f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+  .meta{color:#666;font-size:13px}
+  .mermaid{display:flex;justify-content:center;margin:16px 0;padding:12px;background:#fafbfc;border:1px solid #eee;border-radius:10px}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</head>
+<body>
+<!-- docs/adr/NNN-slug.html. AI-read: terse, link-dense, capture the *why*.
+     Prefer a small diagram (component impact / before-after) over long prose.
+     Keep it lean — teammates load this into context. -->
+
+<h1>ADR NNN — &lt;decision title&gt;</h1>
+<p class="meta"><strong>Status</strong>: proposed | accepted | superseded by
+   <code>docs/adr/MMM-...html</code> &nbsp;·&nbsp; <strong>Plan ref</strong>:
+   <code>plan:NNN</code></p>
+
+<h2>Context</h2>
+<p>&lt;the forces and constraints that make this a real decision&gt;</p>
+
+<h2>Decision</h2>
+<p>&lt;what we decided, stated plainly&gt;</p>
+<pre class="mermaid">
+flowchart LR
+  subgraph Before
+    a1[…]
+  end
+  subgraph After
+    b1[…]
+  end
+  Before -->|decision| After
+</pre>
+
+<h2>Consequences</h2>
+<p>&lt;easier / harder / accepted trade-offs&gt;</p>
+
+<h2>Alternatives considered</h2>
+<ul><li>&lt;option&gt; — rejected because &lt;…&gt;</li></ul>
+</body>
+</html>

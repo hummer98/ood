@@ -1,0 +1,14 @@
+{
+  "name": "ood",
+  "owner": {
+    "name": "hummer98",
+    "url": "https://github.com/hummer98"
+  },
+  "plugins": [
+    {
+      "name": "ood",
+      "source": "./",
+      "description": "Orchestration-Oriented Development: plan in docs/, run with Agent Teams, gate on inspection."
+    }
+  ]
+}

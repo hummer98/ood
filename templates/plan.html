@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Plan NNN — &lt;title&gt;</title>
+<style>
+  body{font:15px/1.7 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;max-width:900px;margin:32px auto;padding:0 20px;color:#1a1a1a}
+  h1{font-size:26px;border-bottom:2px solid #ddd;padding-bottom:8px}
+  h2{font-size:19px;margin-top:32px}
+  code{background:#f3f4f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+  table{border-collapse:collapse;width:100%;margin:12px 0}
+  th,td{border:1px solid #ddd;padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:#f7f8fa}
+  .meta{color:#666;font-size:13px}
+  blockquote{border-left:3px solid #cbd5e1;margin:12px 0;padding:4px 14px;color:#555;background:#f8fafc}
+  .mermaid{display:flex;justify-content:center;margin:18px 0;padding:14px;background:#fafbfc;border:1px solid #eee;border-radius:10px}
+  figure{margin:18px 0;text-align:center} figcaption{color:#666;font-size:12px;margin-top:6px}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</head>
+<body>
+<!-- docs/plans/NNN-slug.html — the contract and program counter for this epic.
+     OOD docs are HTML by default and VISUAL by default: lead with diagrams
+     (Mermaid / inline SVG), not walls of text. One file per doc, no Markdown
+     source. The plan is the source of truth; the Agent Teams task list is a
+     disposable projection rebuilt from it. -->
+
+<h1>Plan NNN — &lt;title&gt;</h1>
+<p class="meta"><strong>Status</strong>: draft | approved | in-progress | done &nbsp;·&nbsp;
+   <strong>Plan ref</strong>: <code>plan:NNN</code> (teammates and the gate hook key off this)</p>
+
+<h2>Intent &amp; scope</h2>
+<p>&lt;1–2 sentences. What is explicitly out of scope.&gt;</p>
+
+<h2>Flow</h2>
+<blockquote>Show how the feature behaves / the user or data flow. Use a sequence
+diagram for interactions, a flowchart for branching logic.</blockquote>
+<pre class="mermaid">
+flowchart LR
+  U([User]) --> A[Action]
+  A --> D{Decision}
+  D -- yes --> O1[Outcome A]
+  D -- no  --> O2[Outcome B]
+</pre>
+
+<h2>Acceptance criteria</h2>
+<blockquote>Each must be checkable. The inspector verifies against these.</blockquote>
+<ul>
+  <li><strong>AC1</strong>: &lt;observable, testable statement&gt;</li>
+  <li><strong>AC2</strong>: ...</li>
+</ul>
+
+<h2>Task breakdown &amp; dependencies</h2>
+<pre class="mermaid">
+flowchart TD
+  T2[T2 design]:::a --> T1[T1 build foo]:::i
+  T2 --> T3[T3 build bar]:::i
+  T1 --> T4[T4 inspect]:::n
+  T3 --> T4
+  classDef a fill:#e0e7ff,stroke:#6366f1
+  classDef i fill:#dcfce7,stroke:#16a34a
+  classDef n fill:#fef9c3,stroke:#ca8a04
+</pre>
+<table>
+  <tr><th>task</th><th>description</th><th>gate</th><th>owner role</th></tr>
+  <tr><td>T1</td><td>&lt;…&gt;</td><td><code>[gate:inspect]</code></td><td>implementer</td></tr>
+  <tr><td>T2</td><td>&lt;design&gt;</td><td>—</td><td>architect</td></tr>
+  <tr><td>T3</td><td>&lt;…&gt;</td><td><code>[gate:inspect]</code></td><td>implementer</td></tr>
+</table>
+
+<h2>File-ownership map</h2>
+<blockquote>No two concurrently-running tasks may own the same file (no worktree
+isolation in team mode).</blockquote>
+<table>
+  <tr><th>task</th><th>owned files</th></tr>
+  <tr><td>T1</td><td><code>src/foo/**</code></td></tr>
+  <tr><td>T3</td><td><code>src/bar/**</code></td></tr>
+</table>
+
+<h2>Open questions / risks</h2>
+<ul><li>&lt;…&gt;</li></ul>
+
+<h2>Linked ADRs</h2>
+<ul><li><code>docs/adr/NNN-...html</code></li></ul>
+</body>
+</html>

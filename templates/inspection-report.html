@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Inspection NNN — &lt;title&gt;</title>
+<style>
+  body{font:15px/1.7 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;max-width:880px;margin:32px auto;padding:0 20px;color:#1a1a1a}
+  h1{font-size:26px;border-bottom:2px solid #ddd;padding-bottom:8px}
+  h2{font-size:19px;margin-top:28px}
+  .verdict{display:inline-block;padding:4px 14px;border-radius:6px;font-weight:800;font-size:18px}
+  .go{background:#dcfce7;color:#166534} .nogo{background:#fee2e2;color:#991b1b}
+  code{background:#f3f4f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+  .meta{color:#666;font-size:13px}
+  blockquote{border-left:3px solid #cbd5e1;margin:12px 0;padding:4px 14px;color:#555;background:#f8fafc}
+  ol li,ul li{margin:5px 0}
+  table{border-collapse:collapse;width:100%;margin:12px 0}
+  th,td{border:1px solid #ddd;padding:6px 10px;text-align:left}
+  th{background:#f7f8fa}
+  .mermaid{display:flex;justify-content:center;margin:14px 0;padding:12px;background:#fafbfc;border:1px solid #eee;border-radius:10px}
+</style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</head>
+<body>
+<!-- docs/reports/NNN-inspection.html. The completion gate greps for the text
+     "Verdict: GO". Keep the heading exactly <h2>Verdict: GO</h2> or
+     <h2>Verdict: NOGO</h2>. Visualize the criteria status (e.g. a state diagram
+     or a status table) rather than only listing prose. -->
+
+<h1>Inspection NNN — &lt;title&gt;</h1>
+<p class="meta"><strong>Plan ref</strong>: <code>plan:NNN</code> &nbsp;·&nbsp;
+   <strong>Inspected commit</strong>: &lt;sha&gt;</p>
+
+<h2>Verdict: NOGO</h2>
+<p><span class="verdict nogo">NOGO</span> &nbsp;<span class="meta">(switch to
+   <code>&lt;h2&gt;Verdict: GO&lt;/h2&gt;</code> + <span class="verdict go">GO</span> when it passes)</span></p>
+
+<h2>Summary</h2>
+<p>&lt;2–3 sentences&gt;</p>
+
+<h2>Acceptance criteria status</h2>
+<table>
+  <tr><th>criterion</th><th>状態</th><th>evidence</th></tr>
+  <tr><td>AC1</td><td>✅ met / ❌ unmet</td><td>&lt;test / observation&gt;</td></tr>
+  <tr><td>AC2</td><td>…</td><td>…</td></tr>
+</table>
+
+<h2>Findings</h2>
+<ol>
+  <li>(critical|major|minor) &lt;finding&gt;</li>
+</ol>
+
+<h2>Fix Required</h2>
+<blockquote>Only on NOGO. Actionable for the implementer. A flowchart of the
+required fix path is welcome when it clarifies order.</blockquote>
+<ol>
+  <li><strong>File</strong>: <code>path</code><br>
+      <strong>Problem</strong>: &lt;…&gt;<br>
+      <strong>Expected</strong>: &lt;…&gt;<br>
+      <strong>Verify</strong>: <code>&lt;command&gt;</code></li>
+</ol>
+</body>
+</html>

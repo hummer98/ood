@@ -1,0 +1,28 @@
+{
+  "name": "ood",
+  "version": "0.1.0",
+  "description": "Orchestration-Oriented Development (OOD) for Claude Code: author the plan in docs/, run it with Agent Teams, gate completion on inspection. Flat 2-tier (lead + role teammates), no JSON state machine — the docs are the state.",
+  "author": {
+    "name": "hummer98",
+    "url": "https://github.com/hummer98"
+  },
+  "homepage": "https://github.com/hummer98/ood",
+  "repository": "https://github.com/hummer98/ood",
+  "license": "MIT",
+  "keywords": ["orchestration", "agent-teams", "spec-driven", "documentation", "multi-agent", "subagents"],
+  "commands": "./commands/",
+  "skills": "./skills/",
+  "agents": "./agents/",
+  "hooks": {
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/gate-task-completed.py\""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+<!-- OOD doc-map — merge this into the target project's CLAUDE.md so every
+     teammate (which loads CLAUDE.md automatically) knows the document layout. -->
+
+## Document layout (Orchestration-Oriented Development)
+
+This project uses the OOD document-driven workflow. The documents under
+`docs/` are the state — there is no JSON state machine.
+
+| dir | what it holds | read it when |
+|---|---|---|
+| `docs/plans/` | the contract for each epic: intent, **acceptance criteria**, task breakdown, **file-ownership map**. `plan:NNN` is the key. | before doing any work; it is the source of truth |
+| `docs/adr/` | decisions and why (terse, AI-read) | when a choice's rationale matters |
+| `docs/specs/` | the living spec — what the system does, synced to reality | to understand current behaviour |
+| `docs/reports/` | completion markers & journal, incl. `NNN-inspection.html` with `<h2>Verdict: GO|NOGO</h2>` | to see what's done / inspection outcomes |
+
+Conventions:
+- **Docs are HTML and visual by default.** Lead with diagrams — Mermaid
+  (`<pre class="mermaid">…</pre>`) for sequence / flowchart / architecture / state,
+  or inline SVG for precise static figures. Prefer a diagram over a wall of text.
+- The plan in `docs/plans/` is authoritative. Any Agent Teams task list is a
+  disposable projection of it.
+- A task that must pass inspection is marked `[gate:inspect]` and references
+  `plan:NNN`. It cannot complete until `docs/reports/NNN-inspection.html` says
+  `Verdict: GO` (enforced by a TaskCompleted hook).
+- Stay within your assigned file-ownership boundary; do not edit another
+  teammate's files (there is no worktree isolation in team mode).
