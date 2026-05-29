@@ -10,9 +10,6 @@
   "repository": "https://github.com/hummer98/ood",
   "license": "MIT",
   "keywords": ["orchestration", "agent-teams", "spec-driven", "documentation", "multi-agent", "subagents"],
-  "commands": "./commands/",
-  "skills": "./skills/",
-  "agents": "./agents/",
   "hooks": {
     "TaskCompleted": [
       {
